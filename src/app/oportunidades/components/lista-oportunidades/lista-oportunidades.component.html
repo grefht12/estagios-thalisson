@@ -1,0 +1,25 @@
+<ion-item-sliding #sliding>
+  <ion-item (click)="update.emit(oportunidade)">
+    {{ oportunidade.titulo }}
+    <ion-checkbox
+      slot="end"
+      color="primary"
+      [checked]="oportunidade.done"
+      (click)="$event.stopPropagation(); done.emit(oportunidade)"
+    ></ion-checkbox>
+  </ion-item>
+  <ion-item-options side="start">
+    <ion-item-option
+      color="danger"
+      (click)="delete.emit(oportunidade); sliding.close()"
+    >
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-item-option>
+    <ion-item-option
+      color="warning"
+      (click)="update.emit(oportunidade); sliding.close()"
+    >
+      <ion-icon slot="icon-only" name="create"></ion-icon>
+    </ion-item-option>
+  </ion-item-options>
+</ion-item-sliding>
